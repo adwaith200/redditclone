@@ -10,11 +10,13 @@ const userschema=new mongoose.Schema({
     },
     email:{
         type:String,
-        required:[true,'A user must have an email']
+        required:[true,'A user must have an email'],
+        unique:true
     },
     password:{
         type:String,
-        required:[true,'A user must have a password']
+        required:[true,'A user must have a password'],
+        unique:true
     },
     confirmpassword:{
         type:String,
@@ -41,6 +43,14 @@ const userschema=new mongoose.Schema({
     communtiesfollowing:[{
             type:mongoose.Schema.ObjectId,
             ref:'Community'
+    }],
+    upvoted:[{
+        type:mongoose.Schema.ObjectId,
+        ref:'Post'
+    }],
+    downvoted:[{
+        type:mongoose.Schema.ObjectId,
+        ref:'Post'
     }]
 },{
     toJSON:{virtuals:true},

@@ -31,15 +31,15 @@ communityschema.virtual('posts',{
     ref:'Post',
     foreignField:'community',
     localField:'_id'
-});
+}); 
 
 
 communityschema.pre(/^find/,function(next){
-    this.populate({
-        path:'followers',
-        select:'name'
-    });
-    this.populate('posts');
+    // this.populate({
+    //     path:'followers',
+    //     select:'name'
+    // });
+    // this.populate('posts');
     // this.populate({
     //     path:'posts',
     //     select:'user title'

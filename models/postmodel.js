@@ -19,7 +19,7 @@ const postschema=new mongoose.Schema({
         type:Number,
         default:0
     },
-    downvotes:{
+    downvotes:{ 
         type:Number,
         default:0
     },
@@ -35,7 +35,16 @@ const postschema=new mongoose.Schema({
         type:String,
         default:'default.jpg'
     }
+},{
+    toJSON:{virtuals:true},
+    toObject:{virtuals:true}
 });
+
+postschema.virtual('comments',{
+    ref:'Comment',
+    foreignField:'post',
+    localField:'_id'
+}); 
 
 postschema.pre(/^find/,function(next){
     this.populate({
@@ -46,8 +55,9 @@ postschema.pre(/^find/,function(next){
     //     path:'community',
     //     select:'name '
     // });
+    // this.populate('comments');
     next();
-})
+});
 
 const Post=mongoose.model('Post',postschema);
 

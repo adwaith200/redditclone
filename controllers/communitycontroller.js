@@ -21,7 +21,10 @@ exports.getallcommunity=async(req,res,next)=>{
 
 exports.getonecommunity=async(req,res,next)=>{
     try{
-        const communitydata=await Community.findById(req.params.id);
+        const communitydata=await Community.findById(req.params.id).populate('posts').populate({
+            path:'followers',
+            select:'name'
+        });;
         res.json({
             status:'success',
             data:communitydata

@@ -9,6 +9,7 @@ const Apperror=require('./utils/Apperror');
 const userrouter=require('./routes/userroute');
 const communityrouter=require('./routes/communityroute');
 const postrouter=require('./routes/postroute');
+const commentrouter=require('./routes/commentroute');
 
 //Uses express framework
 const app=express();
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname,'templates')));
 app.use('/user',userrouter);
 app.use('/community',communityrouter);
 app.use('/post',postrouter);
+app.use('/comment',commentrouter);
 
 //Global Error handler
 app.use(errorcontroller);

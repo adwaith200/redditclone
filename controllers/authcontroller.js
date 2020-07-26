@@ -56,7 +56,8 @@ exports.login=async(req,res,next)=>{
             return next(new Apperror('Please enter all credentials',401));
         }
         const userdata=await User.findOne({email:email});
-        console.log(email,password);
+        console.log(email,password,userdata);
+        console.log(!await userdata.checkpassword(password,userdata.password));
         if(!userdata|| !await userdata.checkpassword(password,userdata.password))
         {
             return next(new Apperror('Invalid email or password'));
