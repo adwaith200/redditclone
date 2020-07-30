@@ -27,9 +27,25 @@ exports.getoneposts=async(req,res,next)=>{
             path:'community',
             select:'name communitypic'
         }).populate('comments');
+
+        function compare(a, b) {
+            const bandA = a.date;
+            const bandB = b.date;
+          
+            let comparison = 0;
+            if (bandA > bandB) {
+              comparison = 1;
+            } else if (bandA < bandB) {
+              comparison = -1;
+            }
+            return comparison*-1;
+        }
+
+        postdata.comments.sort(compare);
         res.json({
             status:"success",
-            data:postdata
+            data:postdata,
+            // comments:postdata.comments.sort(compare)
         });
     }catch(err)
     {

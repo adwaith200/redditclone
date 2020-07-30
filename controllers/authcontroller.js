@@ -63,6 +63,10 @@ exports.login=async(req,res,next)=>{
             return next(new Apperror('Invalid email or password'));
         }
         const token=jwt.sign({id:userdata._id},process.env.JWT_SECRET);
+        res.cookie('jwt',token,{                                        //jwt token is also sent in form of cookie for browser use of authentication
+            expires:new Date(Date.now()+90*24*60*60*1000),
+            httpOnly:true
+        });
         res.json({
             status:'Success',
             token,

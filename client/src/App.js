@@ -1,21 +1,48 @@
+//React imports
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import {connect} from 'react-redux';
+
+//User defined imports
+
+import {autologin} from './store/actions/auth';
+import Navbar from './components/UI/Navbar/navbar';
+import Login from './containers/login/login';
+import Signup from './containers/signup/signup';
+import Logout from './containers/login/logout/logout';
+import Forgotpassword from './containers/passwordreset/forgotpassword/forgotpassword';
+import Resetpassword from './containers/passwordreset/resetpassword';
 import './App.css';
 
+
+
 class App extends Component {
+  componentDidMount(){
+    this.props.autologinHandler();
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar/>
+          <Switch>
+            <Route path='/' exact render={()=><h1>hello</h1>}/>
+            <Route path='/login' component={Login} />
+            <Route path='/signup' component={Signup}/>
+            <Route path='/logout' component={Logout}/>
+            <Route path='/forgotpassword' component={Forgotpassword}/>
+            <Route path='/resetpassword/:token' component={Resetpassword}/>
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps=dispatch=>{
+  return {
+    autologinHandler:()=>dispatch(autologin())
+  }
+}
+
+export default connect(null,mapDispatchToProps)(App);

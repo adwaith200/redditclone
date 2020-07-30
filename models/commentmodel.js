@@ -15,6 +15,10 @@ const commentschema=new mongoose.Schema({
         type:mongoose.Schema.ObjectId,
         ref:'Post',
         required:[true,'Must belong to a post']
+    },
+    description:{
+        type:String,
+        required:[true,'A comment must have a description']
     }
 });
 

@@ -2,6 +2,7 @@
 const express=require('express');
 const cookieparser=require('cookie-parser');
 const path=require('path');
+const cors=require('cors');
 
 //User defined modules
 const errorcontroller=require('./controllers/errorcontroller');
@@ -24,6 +25,7 @@ app.use(cookieparser());
 app.use(express.static(path.join(__dirname,'templates')));
 
 //Routes
+app.use(cors());
 app.use('/user',userrouter);
 app.use('/community',communityrouter);
 app.use('/post',postrouter);

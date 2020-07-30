@@ -1,0 +1,39 @@
+.signup{
+    padding: 1rem;
+}
+
+h1{
+    margin-bottom: 1.5rem;
+}
+
+.signupdata{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 5rem;
+    /* align-items: space; */
+    justify-content: space-between;
+    /* background-color: red; */
+    margin: auto;
+}
+
+@media (min-width:1300px)
+{
+    .signupdata{
+        width: 23rem;
+    }
+}
+
+@media (max-width:991px)
+{
+    .signupdata{
+        width: 50%;
+    }
+}
+
+@media (max-width:500px)
+{
+    .signupdata{
+        width: 70%;
+    }
+}
