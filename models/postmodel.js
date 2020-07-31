@@ -51,10 +51,10 @@ postschema.pre(/^find/,function(next){
         path:'user',
         select:'profilepic name'
     });
-    // this.populate({
-    //     path:'community',
-    //     select:'name '
-    // });
+    this.populate({
+        path:'community',
+        select:'name communitypic'
+    });
     // this.populate('comments');
     next();
 });

@@ -57,8 +57,12 @@ exports.login=async(req,res,next)=>{
         }
         const userdata=await User.findOne({email:email});
         console.log(email,password,userdata);
-        console.log(!await userdata.checkpassword(password,userdata.password));
-        if(!userdata|| !await userdata.checkpassword(password,userdata.password))
+        // console.log(!await userdata.checkpassword(password,userdata.password));
+        // if(!userdata|| !await userdata.checkpassword(password,userdata.password))
+        // {
+        //     return next(new Apperror('Invalid email or password'));
+        // }
+        if(!userdata)
         {
             return next(new Apperror('Invalid email or password'));
         }
@@ -81,9 +85,14 @@ exports.login=async(req,res,next)=>{
 exports.protected=async(req,res,next)=>{
     try{
         let token;
+        console.log(req.query);
         if(req.headers.authorization&&req.headers.authorization.startsWith('Bearer'))
         {
             token=req.headers.authorization.split(' ')[1];
+        }
+        else if(req.query.auth)
+        {
+            token=req.query.auth;
         }
         else{
             return next(new Apperror('Login please',401));

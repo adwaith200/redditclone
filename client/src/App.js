@@ -12,6 +12,8 @@ import Signup from './containers/signup/signup';
 import Logout from './containers/login/logout/logout';
 import Forgotpassword from './containers/passwordreset/forgotpassword/forgotpassword';
 import Resetpassword from './containers/passwordreset/resetpassword';
+import Allposts from './containers/posts/allposts/allposts';
+import Userposts from './containers/posts/userposts/userposts';
 import './App.css';
 
 
@@ -26,7 +28,8 @@ class App extends Component {
         <div className="App">
           <Navbar/>
           <Switch>
-            <Route path='/' exact render={()=><h1>hello</h1>}/>
+            <Route path='/' exact component={Allposts}/>
+            <Route path='/myposts' component={Userposts}/>
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup}/>
             <Route path='/logout' component={Logout}/>
@@ -39,10 +42,16 @@ class App extends Component {
   }
 }
 
+const mapStateToProps=state=>{
+  return {
+    isauth:state.auth.token!==null
+  }
+}
+
 const mapDispatchToProps=dispatch=>{
   return {
     autologinHandler:()=>dispatch(autologin())
   }
 }
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);

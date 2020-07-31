@@ -33,7 +33,9 @@ exports.resizepic=async(req,res,next)=>{
         return next();
     }
     req.file.filename=`user-${Date.now()}.jpeg`;
-    await sharp(req.file.buffer).resize(500,500).toFormat('jpeg').jpeg({quality:90}).toFile(`templates/img/users/${req.file.filename}`);
+    //client/public/images
+    // await sharp(req.file.buffer).resize(500,500).toFormat('jpeg').jpeg({quality:90}).toFile(`templates/img/users/${req.file.filename}`);
+    await sharp(req.file.buffer).resize(500,500).toFormat('jpeg').jpeg({quality:90}).toFile(`client/public/images/userprofile/${req.file.filename}`);
     next();
 }
 

@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actiontypes';
 const inititalState={
     token:null,
     userid:null,
-    loading:false
+    loading:false,
+    error:false
 }
 
 const reducer=(state=inititalState,action)=>{
@@ -12,7 +13,8 @@ const reducer=(state=inititalState,action)=>{
         case actionTypes.authstart:
             return {
                 ...state,
-                loading:true
+                loading:true,
+                error:false
             }
         case actionTypes.authsuccess:
             return {
@@ -24,7 +26,8 @@ const reducer=(state=inititalState,action)=>{
         case actionTypes.authfail:
             return {
                 ...state,
-                loading:false
+                loading:false,
+                error:true
             }
         case actionTypes.logout:
             return{
@@ -32,6 +35,11 @@ const reducer=(state=inititalState,action)=>{
                 loading:false,
                 token:null,
                 userid:null
+            }
+        case actionTypes.resetpassword:
+            return {
+                ...state,
+                loading:false
             }
         default:return state;
     }

@@ -10,6 +10,7 @@ const User = require('../models/usermodel');
 
 exports.getallposts=async(req,res,next)=>{
     try{
+        console.log(req.query);
         const postdata=await Post.find();
         res.json({
             status:"success",
@@ -105,7 +106,7 @@ exports.getusertoppost=async(req,res,next)=>{
     }catch(err)
     {
         next(err);
-    }
+    } 
 }
 
 //Get the newest posts for the communites user follows
@@ -265,7 +266,8 @@ exports.resizepic=async(req,res,next)=>{
         return next();
     }
     req.file.filename=`posts-${Date.now()}.jpeg`;
-    await sharp(req.file.buffer).resize(500,500).toFormat('jpeg').jpeg({quality:90}).toFile(`templates/img/postspic/${req.file.filename}`);
+    // await sharp(req.file.buffer).resize(500,500).toFormat('jpeg').jpeg({quality:90}).toFile(`templates/img/postspic/${req.file.filename}`);
+    await sharp(req.file.buffer).resize(500,500).toFormat('jpeg').jpeg({quality:90}).toFile(`client/public/images/postpics/${req.file.filename}`);
     next();
 }
 

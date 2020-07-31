@@ -1,0 +1,42 @@
+.topornew{
+    background-color: white;
+    display: flex;
+    /* background-color: red; */
+    width: 50%;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-bottom: -10px;
+}
+
+.top:hover{
+    cursor: pointer;
+}
+
+.new:hover{
+    cursor: pointer;
+}
+
+.activeclass{
+    border-bottom: 2px solid black;
+}
+
+@media (max-width:700px)
+{
+    .topornew{
+        width: 60%;
+    }
+}
+
+@media (max-width:540px)
+{
+    .topornew{
+        width: 70%;
+    }
+}
+
+@media (max-width:400px)
+{
+    .topornew{
+        width: 90%;
+    }
+}

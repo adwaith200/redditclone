@@ -16,6 +16,9 @@ h1{
     /* background-color: red; */
     margin: auto;
 }
+.validator{
+    color:red;
+}
 
 @media (min-width:1300px)
 {

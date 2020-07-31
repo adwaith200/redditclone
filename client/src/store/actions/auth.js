@@ -40,7 +40,7 @@ export const loginstart=(email,password)=>{
             dispatch(loginsuccess(logindata.data.token,logindata.data.data.id));
         }catch(err)
         {
-            console.log(err.response);
+            // console.log(err.response);
             dispatch(loginfail());
         }
     }
@@ -87,18 +87,20 @@ export const signupstart=(name,email,password,confirmpassword)=>{
 }
 
 export const resetpassword=(token,password,confirmpassword)=>{
-    return dispatch=>{
+    return async dispatch=>{
         dispatch({type:actionTypes.authstart});
         try{
-            // const passworddata=await Axios({
-            //     method:'POST',
-            //     url:'/resetpassword/'+token,
-            //     data:{
-            //         password,
-            //         confirmpassword
-            //     }
-            // });
-            console.log(token,password,confirmpassword);
+            // console.log(token,password,confirmpassword);
+            const passworddata=await Axios({
+                method:'POST',
+                url:'/user/resetpassword/'+token,
+                data:{
+                    password,
+                    confirmpassword
+                }
+            });
+            // console.log(passworddata);
+            dispatch({type:actionTypes.resetpassword});
         }catch(err)
         {
             console.log(err.response);

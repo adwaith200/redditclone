@@ -33,7 +33,9 @@ class Signup extends Component{
                 value:'',
                 key:4
             }
-        ]
+        ],
+        allfielderror:false,
+        passworderror:false
     }
     inputchangeHandler=(id,e)=>{
         const index=this.state.inputs.findIndex(el=>el.key===id);
@@ -47,7 +49,33 @@ class Signup extends Component{
     }
     submitloginHandler=(e)=>{
         e.preventDefault();
-        this.props.signupHandler(this.state.inputs[0].value,this.state.inputs[1].value,this.state.inputs[2].value,this.state.inputs[3].value);
+        let error=false;
+        this.state.inputs.forEach(input=>{
+            if(input.value==='')
+            {
+                this.setState({
+                    allfielderror:true
+                });
+                error=true;
+            }
+        });
+        if(this.state.inputs[2].value!==this.state.inputs[3].value)
+        {
+            this.setState({
+                passworderror:true
+            });
+            error=true;
+        }
+        if(!error)
+        {
+            this.props.signupHandler(this.state.inputs[0].value,this.state.inputs[1].value,this.state.inputs[2].value,this.state.inputs[3].value);
+        }
+    }
+    componentDidMount(){
+        this.setState({
+            passworderror:false,
+            allfielderror:false
+        });
     }
     render()
     {
@@ -58,6 +86,8 @@ class Signup extends Component{
                 <React.Fragment>
                     {this.props.isauth?<Redirect to='/'/>:null}
                     <h1>Sign Up</h1>
+                    {this.state.allfielderror?<span className='validator'>Please fill all the fields</span>:null}
+                    {this.state.passworderror?<span className='validator'>Both the passwords dont match</span>:null}
                     <form className='signupdata'>
                         {this.state.inputs.map(ele=>{
                             return <Input key={ele.key} type={ele.type} changed={(e)=>this.inputchangeHandler(ele.key,e)}/>

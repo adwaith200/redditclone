@@ -1,0 +1,50 @@
+.post{
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    /* border: 1px solid black; */
+    margin-bottom: 1rem;
+}
+
+.communtiy{
+    display: flex;
+    justify-content: space-between;
+    /* padding:5px; */
+    width: 10rem;
+    /* background-color: red; */
+}
+
+.communtiy__img{
+    height: 3rem;
+}
+
+.community__pic{
+    height: 100%;
+    border-radius: 50%;
+}
+
+.postdata{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.post__para{
+    font-weight: 700;
+}
+
+.post__img{
+    height: 4rem;
+}
+.post__pic{
+    height: 100%;
+    border-radius: 10px;
+}
+
+.post__extra{
+    display: flex;
+    justify-content: space-between;
+    width: 16rem;
+}

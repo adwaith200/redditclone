@@ -1,6 +1,7 @@
 //React modules
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 //User defined imports
 import Input from '../../components/UI/input/input';
@@ -21,7 +22,9 @@ class Resetpassword extends Component{
                 value:'',
                 key:2
             }
-        ]
+        ],
+        err:false,
+        redirect:false
     }
     inputchangeHandler=(id,e)=>{
         const index=this.state.inputs.findIndex(el=>el.key===id);
@@ -36,19 +39,41 @@ class Resetpassword extends Component{
     resetpasswordHandler=(e)=>{
         e.preventDefault();
         // console.log(this.props.match);
-        this.props.resetpasswordauth(this.props.match.params.token,this.state.inputs[0].value,this.state.inputs[1].value);
+        if(this.state.inputs[0].value===this.state.inputs[1].value)
+        {
+            this.props.resetpasswordauth(this.props.match.params.token,this.state.inputs[0].value,this.state.inputs[1].value);
+            this.setState({
+                redirect:true
+            });
+        }
+        else
+        {
+            this.setState({
+                err:true
+            })
+        }
     }   
+    componentDidMount(){
+        this.setState({
+            redirect:false,
+            err:false
+        });
+    }
     render()
     {
         return (
             <div className='resetpassword'>
-                <h1>Reset Your Password</h1>
-                <form className='resetpassworddata' onSubmit={this.resetpasswordHandler}>
-                    {this.state.inputs.map(ele=>{
-                        return <Input key={ele.key} type={ele.type} changed={(e)=>this.inputchangeHandler(ele.key,e)}/>
-                    })}
-                    <Button type='Reset Password' submit={this.resetpasswordHandler}/>
-                </form>
+                {this.state.redirect?<Redirect to='/login'/>:
+                <React.Fragment>
+                    <h1>Reset Your Password</h1>
+                    {this.state.err?<span className='validator'>Invalid email or password</span>:null}
+                    <form className='resetpassworddata' onSubmit={this.resetpasswordHandler}>
+                        {this.state.inputs.map(ele=>{
+                            return <Input key={ele.key} type={ele.type} changed={(e)=>this.inputchangeHandler(ele.key,e)}/>
+                        })}
+                        <Button type='Reset Password' submit={this.resetpasswordHandler}/>
+                    </form>
+                </React.Fragment>}
             </div>
         );
     }

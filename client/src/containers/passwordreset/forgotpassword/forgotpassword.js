@@ -12,7 +12,6 @@ class Forgotpassword extends Component{
         email:''
     }
     changeemailHandler=(e)=>{
-        console.log(e.target.value);
         this.setState({
             email:e.target.value
         })
@@ -20,6 +19,7 @@ class Forgotpassword extends Component{
     sendmailHandler=async(e)=>{
         e.preventDefault();
         try{
+            alert('password reset link sent to mail');
             const data=await axios({
                 method:'POST',
                 url:'/user/forgotpassword',
@@ -27,7 +27,7 @@ class Forgotpassword extends Component{
                     email:this.state.email
                 }
             });
-            console.log(data);
+            // console.log(data);
         }catch(err)
         {
             console.log(err);

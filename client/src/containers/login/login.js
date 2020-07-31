@@ -24,7 +24,8 @@ class Login extends Component{
                 value:'',
                 key:2
             }
-        ]
+        ],
+        isvalid:true
     }
     inputchangeHandler=(id,e)=>{
         const index=this.state.inputs.findIndex(el=>el.key===id);
@@ -36,7 +37,7 @@ class Login extends Component{
             inputs:myinputarr
         });
     }
-    submitloginHandler=(e)=>{
+    submitloginHandler=async(e)=>{
         e.preventDefault();
         this.props.loginhandler(this.state.inputs[0].value,this.state.inputs[1].value);
     }
@@ -48,6 +49,7 @@ class Login extends Component{
                 <React.Fragment>
                 {this.props.isauth?<Redirect to='/'/>:null}
                 <h1>Login</h1>
+                {this.props.error?<span className='validator'>Invalid email or password</span>:null} 
                 <form className='logindata' onSubmit={this.submitloginHandler}>
                     {this.state.inputs.map(ele=>{
                         return <Input key={ele.key} type={ele.type} changed={(e)=>this.inputchangeHandler(ele.key,e)}/>
@@ -64,7 +66,8 @@ class Login extends Component{
 const mapStateToProps=state=>{
     return {
         isauth:state.auth.token!==null,
-        loading:state.auth.loading
+        loading:state.auth.loading,
+        error:state.auth.error
     }
 }
 

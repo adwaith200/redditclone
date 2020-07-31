@@ -1,0 +1,41 @@
+.votes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgb(212, 212, 212);
+    width: 6rem;
+    border-radius: 15px;
+    padding: 8px 1rem;
+    position: relative;
+}
+.upvotebtncontainer{
+    
+}
+.upvotebtn{
+    background-color: transparent;
+    border: none;
+}
+.upvotebtn:focus{
+    outline: none;
+}
+.upvoted{
+    color:rgb(3, 211, 166);
+}
+.votenumber{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.downvotebtn{
+    background-color: transparent;
+    border: none;
+}
+
+.downvotebtn:focus{
+    outline: none;
+}
+
+.downvoted{
+    color: red;
+}
