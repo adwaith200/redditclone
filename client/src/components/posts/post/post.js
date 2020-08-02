@@ -1,5 +1,6 @@
 //React modules
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 
 //User defined modules
 import './post.css';
@@ -12,9 +13,14 @@ const post=props=>{
     const montharr=['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
     const month=montharr[date.getMonth()];
     const day=date.getDate();
+    
+    const directtocommunity=()=>{
+        props.history.push('/community/'+props.post.community._id);
+    }
+
     return (
         <div className='post'>
-            <div className='communtiy'>
+            <div className='communtiy' onClick={directtocommunity}>
                 <div className='communtiy__img'>
                     <img src={'images/communitypics/'+props.post.community.communitypic} className='community__pic'></img>
                 </div>
@@ -43,4 +49,4 @@ const post=props=>{
     )
 }
 
-export default post;
+export default withRouter(post);

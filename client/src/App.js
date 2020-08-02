@@ -13,7 +13,9 @@ import Logout from './containers/login/logout/logout';
 import Forgotpassword from './containers/passwordreset/forgotpassword/forgotpassword';
 import Resetpassword from './containers/passwordreset/resetpassword';
 import Allposts from './containers/posts/allposts/allposts';
+import Onepost from './containers/posts/onepost/onepost';
 import Userposts from './containers/posts/userposts/userposts';
+import Community from './containers/community/community';
 import './App.css';
 
 
@@ -30,11 +32,13 @@ class App extends Component {
           <Switch>
             <Route path='/' exact component={Allposts}/>
             <Route path='/myposts' component={Userposts}/>
+            <Route path='/community/:communityid' component={Community}/>
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup}/>
             <Route path='/logout' component={Logout}/>
             <Route path='/forgotpassword' component={Forgotpassword}/>
             <Route path='/resetpassword/:token' component={Resetpassword}/>
+            <Route path='/:id' component={Onepost}/>
           </Switch>
         </div>
       </BrowserRouter>

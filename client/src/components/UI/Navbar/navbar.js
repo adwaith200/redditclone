@@ -16,7 +16,7 @@ const navbar=props=>{
         props.history.push(`/${page}`);
     }
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
             <div className='narbarimg'>
                 <img src={'/images/'+navbarpic} className='navbarpic' alt=''/>
             </div>

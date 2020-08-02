@@ -85,7 +85,7 @@ exports.login=async(req,res,next)=>{
 exports.protected=async(req,res,next)=>{
     try{
         let token;
-        console.log(req.query);
+        // console.log(req.query);
         if(req.headers.authorization&&req.headers.authorization.startsWith('Bearer'))
         {
             token=req.headers.authorization.split(' ')[1];

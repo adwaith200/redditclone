@@ -16,7 +16,6 @@ const topornewpost=props=>{
     const token=localStorage.getItem('token');
     useEffect(()=>{
         const gettoppostdata=async()=>{
-            console.log(localStorage.getItem('token'));
             try{
                 const postdata=await axios(props.topposturl+'?auth='+token);
                 setPosts(postdata.data.data);

@@ -1,0 +1,34 @@
+.community__details__description{
+    margin-top: 10px;
+    font-weight: 400;
+    opacity: 0.6;
+    margin-bottom: -0px;
+}
+
+.community__details__description__bold{
+    font-weight: 500;
+}
+
+.community__details__button{
+    margin-top: -5px;
+    padding: 3px 20px;
+    border-radius: 15px;
+    border: 1.2px solid rgb(0, 130, 251);
+    background-color: white;
+    color:rgb(0, 130, 251);
+    transition: 0.3s;
+}
+
+.community__details__button:hover{
+    background-color:rgb(0, 130, 251) ;
+    color:white;
+    border: 1.2px solid white;
+}
+
+.community__details__button:focus{
+    outline: none;
+}
+
+.community__posts{
+    margin-top: 0.5rem;
+}

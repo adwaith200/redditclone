@@ -1,0 +1,14 @@
+.communityhead{
+    height: 5.4rem;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.communityhead__img{
+    height: 65%;
+}
+
+.communityhead__pic{
+    height: 100%;
+    border-radius: 50%;
+}

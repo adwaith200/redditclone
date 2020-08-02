@@ -32,7 +32,13 @@ exports.getpostcomments=async(req,res,next)=>{
 
 exports.createcomment=async(req,res,next)=>{
     try{    
-        const commentdata=await Comment.create(req.body);
+        const {post,description}=req.body;
+        const user=req.user.id;
+        const commentdata=await Comment.create({
+            post,
+            description,
+            user
+        });
         res.json({
             status:'Success',
             data:commentdata

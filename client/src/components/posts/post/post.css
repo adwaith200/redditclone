@@ -6,13 +6,14 @@
     align-items: flex-start;
     /* border: 1px solid black; */
     margin-bottom: 1rem;
+    color:black;
 }
 
 .communtiy{
     display: flex;
     justify-content: space-between;
     /* padding:5px; */
-    width: 10rem;
+    width: 11rem;
     /* background-color: red; */
 }
 
