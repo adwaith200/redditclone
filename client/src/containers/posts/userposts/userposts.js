@@ -12,7 +12,7 @@ class Userposts extends Component{
                 <Topornewpost newposturl='/post/newuserpost' topposturl='/post/topuserpost'/>
             </div>
         )
-    }
+    } 
 }
 
 export default Userposts;

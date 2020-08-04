@@ -37,7 +37,7 @@ const navbar=props=>{
                     <NavDropdown.Item href="" eventKey={4}><span onClick={()=>redirect('signup')}>Sign Up</span></NavDropdown.Item>}
                     {props.isauth?<NavDropdown.Item href="" eventKey={5}><span onClick={()=>redirect('addpost')}>Add post</span></NavDropdown.Item>:null}
                     {props.isauth?<NavDropdown.Item href="" eventKey={6}><span onClick={()=>redirect('account')}>Account</span></NavDropdown.Item>:null}
-                    {props.isauth?<NavDropdown.Item href="" eventKey={7}><span onClick={()=>redirect('mycommunites')}>Community</span></NavDropdown.Item>:null}
+                    {props.isauth?<NavDropdown.Item href="" eventKey={7}><span onClick={()=>redirect('communites')}>Community</span></NavDropdown.Item>:null}
                     {props.isauth?<NavDropdown.Item href="" eventKey={8}><span onClick={()=>redirect('logout')}>Log Out</span></NavDropdown.Item>:null}
                 </NavDropdown>
                 </Nav>

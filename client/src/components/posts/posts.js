@@ -39,7 +39,7 @@ const posts=props=>{
             })}
             <div className='postbuttons'>
                 {page===0?null:<button className='prevbtn' onClick={prevpage}>Previous</button>}
-                {page+limit>props.posts.length?null:<button className='nextbtn' onClick={nextpage}>Next</button>}
+                {page+limit>=props.posts.length?null:<button className='nextbtn' onClick={nextpage}>Next</button>}
             </div>
         </div>
     )

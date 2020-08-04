@@ -19,12 +19,9 @@ exports.getallcommunity=async(req,res,next)=>{
     }
 }
 
-exports.getonecommunity=async(req,res,next)=>{
+exports.getusercommunity=async(req,res,next)=>{
     try{
-        const communitydata=await Community.findById(req.params.id).populate('posts').populate({
-            path:'followers',
-            select:'name'
-        });;
+        const communitydata=await Community.find({_id:req.user.communtiesfollowing});
         res.json({
             status:'success',
             data:communitydata
@@ -35,10 +32,39 @@ exports.getonecommunity=async(req,res,next)=>{
     }
 }
 
+exports.getonecommunity=async(req,res,next)=>{
+    try{
+        const communitydata=await Community.findById(req.params.id).populate('posts').populate({
+            path:'followers',
+            select:'name' 
+        });
+        let joinedcomm=false;
+        communitydata.followers.forEach(follower=>{
+            if(req.query.userid)
+            {
+                if(follower._id==req.query.userid)
+                {
+                    joinedcomm=true;
+                }
+            }
+        });
+        
+        res.json({
+            status:'success',
+            data:communitydata,
+            joinedcomm
+        });
+    }catch(err)
+    {
+        next(err);
+    }
+}
+
 //Gets the top post for a community
 exports.gettoppostcommunity=async(req,res,next)=>{
     try{
-        const communitydata=await Community.findById(req.params.id);
+        const communitydata=await Community.findById(req.params.id).populate('posts');
+        // console.log(communitydata);
         let myposts=[...communitydata.posts];
 
         function compare(a, b) {
@@ -67,7 +93,7 @@ exports.gettoppostcommunity=async(req,res,next)=>{
 //Gets the newest post for a community
 exports.getnewpostcommunity=async(req,res,next)=>{
     try{
-        const communitydata=await Community.findById(req.params.id);
+        const communitydata=await Community.findById(req.params.id).populate('posts');;
         let myposts=[...communitydata.posts];
 
         function compare(a, b) {
@@ -134,7 +160,7 @@ exports.createcommunity=async(req,res,next)=>{
             communitydata=await Community.create({
                 name,
                 description,
-                admin,
+                admin:req.user.name,
                 communitypic:req.file.filename
             });
         }
@@ -143,7 +169,7 @@ exports.createcommunity=async(req,res,next)=>{
             communitydata=await Community.create({
                 name,
                 description,
-                admin
+                admin:req.user.name
             });
         }
         // communitydata=await Community.create(req.body);

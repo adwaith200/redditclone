@@ -22,7 +22,7 @@ const post=props=>{
         <div className='post'>
             <div className='communtiy' onClick={directtocommunity}>
                 <div className='communtiy__img'>
-                    <img src={'images/communitypics/'+props.post.community.communitypic} className='community__pic'></img>
+                    <img src={'/images/communitypics/'+props.post.community.communitypic} className='community__pic'></img>
                 </div>
                 <div className='community__name'>
                     <p>{props.post.community.name}</p>
@@ -34,7 +34,7 @@ const post=props=>{
             <div className='postdata'>
                 <p className='post__para'>{props.post.title}</p>
                 <div className='post__img'>
-                    <img src={'images/postpics/'+props.post.postedpic} className='post__pic'></img>
+                    <img src={'/images/postpics/'+props.post.postedpic} className='post__pic'></img>
                 </div>
             </div>
             <div className='post__extra'>

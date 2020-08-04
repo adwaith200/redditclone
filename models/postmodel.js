@@ -32,8 +32,7 @@ const postschema=new mongoose.Schema({
         required:[true,'A description is required']
     },
     postedpic:{
-        type:String,
-        default:'default.jpg'
+        type:String
     }
 },{
     toJSON:{virtuals:true},

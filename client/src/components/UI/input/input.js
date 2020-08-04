@@ -18,9 +18,25 @@ const input=props=>{
     {
         input=<input type='password' placeholder='Confirm your password' onChange={props.changed} className='input'/>
     }
+    else if(props.type==='textarea')
+    {
+        input=<textarea rows='4' className='input'  onChange={props.changed}  placeholder='Add your text...'></textarea>
+    }
+    else if(props.type==='select')
+    {
+        input=( <select className='input'>
+                    <option>Cats</option>
+                    <option>Dogs</option>
+                </select>
+                );
+    }
+    else if(props.type==='file')
+    {
+        input=<input type='file' onChange={props.changed} className='input'/>
+    }
     else 
     {
-        input=<input type='text' placeholder='Enter your name' onChange={props.changed} className='input'/>
+        input=<input type='text' placeholder={props.data} onChange={props.changed} className='input'/>
     }
     return input;
 }
