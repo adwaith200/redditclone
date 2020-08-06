@@ -80,6 +80,7 @@ exports.unfollowcommunity=async(req,res,next)=>{
         const communityid=req.params.communityid;
         let mycommuntiesfollowing=[...userdata.communtiesfollowing];
         const index=mycommuntiesfollowing.findIndex(el=>el==communityid);
+        mycommuntiesfollowing.splice(index,1);
         userdata.communtiesfollowing=mycommuntiesfollowing;
         userdata.save({validateBeforeSave:false});
         res.json({
