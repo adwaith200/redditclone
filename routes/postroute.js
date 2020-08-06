@@ -15,6 +15,8 @@ router.route('/topuserpost').get(authcontroller.protected,postcontroller.getuser
 
 router.route('/newuserpost').get(authcontroller.protected,postcontroller.getusernewposts);
 
+router.route('/userpostedpost').get(authcontroller.protected,postcontroller.getuserpostedposts);
+
 router.route('/upvote/:id').get(authcontroller.protected,postcontroller.upvotepost);
 
 router.route('/downvote/:id').get(authcontroller.protected,postcontroller.downvotepost);

@@ -24,10 +24,8 @@ const votes=props=>{
     const upvote=async()=>{
         try{
             const upvoted=await axios('/post/upvote/'+props.postid+'?auth='+props.token);
-            console.log(upvoted);
             if(upvoted.data.message=='Upvoted')
             {
-                // upvoteclasses.push('upvoted');
                 setUpvotestate(upvotestate+1);
             }
             
@@ -39,8 +37,6 @@ const votes=props=>{
     const downvote=async()=>{
         try{
             const downvoted=await axios('/post/downvote/'+props.postid+'?auth='+props.token);
-            console.log(downvoted,'hello');
-            console.log(downvoted.data.message);
             if(downvoted.data.message=='Downvoted')
             {
                 setUpvotestate(upvotestate-1);

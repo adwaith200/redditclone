@@ -55,7 +55,10 @@ class Login extends Component{
                         return <Input key={ele.key} type={ele.type} changed={(e)=>this.inputchangeHandler(ele.key,e)}/>
                     })}  
                     <Button type='Login' submit={this.submitloginHandler}/>
-                    <Link to='/forgotpassword'>Forgot password?</Link>
+                    <div className='login__links'>
+                        <Link to='/signup'>SignUp</Link>
+                        <Link to='/forgotpassword'>Forgot password?</Link>
+                    </div>
                 </form>
                 </React.Fragment>}
             </div>

@@ -64,7 +64,6 @@ exports.getonecommunity=async(req,res,next)=>{
 exports.gettoppostcommunity=async(req,res,next)=>{
     try{
         const communitydata=await Community.findById(req.params.id).populate('posts');
-        // console.log(communitydata);
         let myposts=[...communitydata.posts];
 
         function compare(a, b) {

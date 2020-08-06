@@ -5,7 +5,6 @@ import React from 'react';
 import './comment.css';
 
 const comment=props=>{
-    // console.log(props.comment);
     const date=new Date(props.comment.date);
     const montharr=['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
     const month=montharr[date.getMonth()];

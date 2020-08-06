@@ -34,7 +34,7 @@ const topornewpost=props=>{
         setTopclasses(topclasses.concat('activeclass'));
         setNewclasses(['new']);
         try{
-            setLoading(true);
+            // setLoading(true);
             const postdata=await axios(props.topposturl+'?auth='+token);
             setPosts(postdata.data.data);
             setLoading(false);
@@ -48,7 +48,7 @@ const topornewpost=props=>{
         setNewclasses(newclasses.concat('activeclass'));
         setTopclasses(['top']);
         try{
-            setLoading(true);
+            // setLoading(true);
             const postdata=await axios(props.newposturl+'?auth='+token);
             setPosts(postdata.data.data);
             setLoading(false);

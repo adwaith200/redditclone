@@ -30,6 +30,13 @@ app.use('/user',userrouter);
 app.use('/community',communityrouter);
 app.use('/post',postrouter);
 app.use('/comment',commentrouter);
+if(process.env.NODE_ENV==='production')
+{
+    app.use(express.static('client/build'));
+    app.get('*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+    });
+}
 
 //Global Error handler
 app.use(errorcontroller);

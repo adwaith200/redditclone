@@ -1,0 +1,70 @@
+.account__user{
+    padding: 1rem;
+}
+
+.account__user__img{
+    height: 6rem;
+}
+
+.account__user__pic{
+    height: 100%;
+    border-radius: 50%;
+}
+
+.account__user__picupload{
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    margin: 0 auto;
+    align-items: center;
+    position: relative;
+}
+
+#profilepic{
+    position: absolute;
+    width: 13rem;
+    left:50%;
+    transform: translateX(-23%);
+    /* background-color: black; */
+}
+
+.account__user__picupload__btn{
+    margin-top: 2.5rem;
+    background-color: rgb(0, 132, 255);
+    color: white;
+    padding: 5px;
+    border: none;
+}
+
+.account__user__picupload__btn:focus{
+    outline: none;
+}
+
+.account__linkoptions{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.account__posts{
+    border-top: 2px solid rgb(212, 212, 212);
+}
+
+.account__comments{
+    border-top: 2px solid rgb(212, 212, 212);
+    padding: 1rem;
+}
+
+@media (max-width:700px)
+{
+    .account__user__img{
+        height: 5rem;
+    }
+}
+
+@media (max-width:500px)
+{
+    .account__user__img{
+        height: 4.5rem;
+    }
+}

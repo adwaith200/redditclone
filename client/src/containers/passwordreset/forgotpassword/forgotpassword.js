@@ -27,7 +27,6 @@ class Forgotpassword extends Component{
                     email:this.state.email
                 }
             });
-            // console.log(data);
         }catch(err)
         {
             console.log(err);

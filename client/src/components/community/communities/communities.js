@@ -7,7 +7,6 @@ import './communities.css';
 import Community from './community/community';
 
 const communities=props=>{
-    console.log(props.communities);
     return (
         <div className='showcommunties'>
             {props.communities.map(community=>{

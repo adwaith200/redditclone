@@ -5,7 +5,6 @@ import React from 'react';
 import './communityhead.css';
  
 const communityhead=props=>{
-    // console.log(props.communitydata.communitypic);
     return (
         <div className='communityhead'>
             <div className='communityhead__img'>

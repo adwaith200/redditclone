@@ -43,7 +43,6 @@ class Addpost extends Component{
         const myinput={...this.state.inputs[index]};
         myinput.value=e.target.value;
         myinputs[index]=myinput;
-        // console.log(myinputs);
         this.setState({
             inputs:myinputs
         });

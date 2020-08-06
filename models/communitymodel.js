@@ -6,7 +6,8 @@ const communityschema=new mongoose.Schema({
         required:[true,'A community must have a name']
     },
     description:{
-        type:String
+        type:String,
+        required:true
     },
     admin:{
         type:String,

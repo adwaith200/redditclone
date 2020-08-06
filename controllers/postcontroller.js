@@ -10,7 +10,6 @@ const User = require('../models/usermodel');
 
 exports.getallposts=async(req,res,next)=>{
     try{
-        console.log(req.query);
         const postdata=await Post.find();
         res.json({
             status:"success",
@@ -137,11 +136,24 @@ exports.getusernewposts=async(req,res,next)=>{
     }
 }
 
+//Gets the posts that the user has posted
+exports.getuserpostedposts=async(req,res,next)=>{
+    try{
+        const postdata=await Post.find({user:req.user.id});
+        res.json({
+            status:'success',
+            data:postdata
+        });
+    }catch(err)
+    {
+        next(err);
+    }
+}
+
 exports.upvotepost=async(req,res,next)=>{
     try{
         const postdata=await Post.findById(req.params.id);
         const userdata=await User.findById(req.user.id);
-        console.log(postdata.id);
         // if(req.user.upvoted.includes(postdata.upvotes))
         // {
         //     return next(new Apperror('Already upvoted',401));
@@ -151,13 +163,11 @@ exports.upvotepost=async(req,res,next)=>{
             if(`${upvote}`==`${postdata.id}`)
             {
                 flag=1;
-                console.log('trueee');
             }
         });
         req.user.downvoted.forEach((downvote,i)=>{
             if(`${downvote}`==`${postdata.id}`)
             {
-                console.log(i);
                 userdata.downvoted.splice(i,1);
                 postdata.downvotes=postdata.downvotes-1;
             }
@@ -166,10 +176,8 @@ exports.upvotepost=async(req,res,next)=>{
         {
             postdata.upvotes=postdata.upvotes+1;
             postdata.save({validateBeforeSave:false});
-            console.log(postdata);
             userdata.upvoted.push(postdata.id);
             userdata.save({validateBeforeSave:false});
-            console.log(userdata);
             res.json({
                 status:'success',
                 message:'Upvoted'
@@ -192,7 +200,6 @@ exports.downvotepost=async(req,res,next)=>{
     try{
         const postdata=await Post.findById(req.params.id);
         const userdata=await User.findById(req.user.id);
-        console.log(postdata.id);
         // if(req.user.upvoted.includes(postdata.upvotes))
         // {
         //     return next(new Apperror('Already upvoted',401));
@@ -207,7 +214,6 @@ exports.downvotepost=async(req,res,next)=>{
         req.user.upvoted.forEach((upvote,i)=>{
             if(`${upvote}`==`${postdata.id}`)
             {
-                console.log(i);
                 userdata.upvoted.splice(i,1);
                 postdata.upvotes=postdata.upvotes-1;
             }
@@ -217,10 +223,8 @@ exports.downvotepost=async(req,res,next)=>{
         {
             postdata.downvotes=postdata.downvotes+1;
             postdata.save({validateBeforeSave:false});
-            console.log(postdata);
             userdata.downvoted.push(postdata.id);
             userdata.save({validateBeforeSave:false});
-            console.log(userdata);
             res.json({
                 status:'success',
                 message:'Downvoted'

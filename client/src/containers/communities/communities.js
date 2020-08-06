@@ -15,7 +15,6 @@ class Communities extends Component{
     {
         try{
             const communitydata=await axios('/community');
-            // console.log(communitydata.data.data);
             this.setState({
                 communities:communitydata.data.data
             });

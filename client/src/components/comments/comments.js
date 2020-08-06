@@ -14,8 +14,6 @@ const comments=props=>{
     const commentchangeHandler=()=>{
         setCommentinput(commentref.current.value);
     }
-    // console.log(commentinput);
-    // console.log(props.commentdata,props.postid);
     
     const postcommentHandler=async ()=>{
         try{
@@ -28,7 +26,6 @@ const comments=props=>{
                 }
             });
             window.location.reload(true);
-            console.log(postedcomment);
         }catch(err)
         {
             console.log(err.response);
@@ -55,7 +52,7 @@ const comments=props=>{
                 {props.commentdata.map(comment=>{
                     return <Comment comment={comment} key={comment._id}/>
                 })}
-            </div>
+            </div> 
         </div>
     )
 }

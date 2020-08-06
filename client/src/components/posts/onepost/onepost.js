@@ -7,7 +7,6 @@ import Votes from '../../votes/votes';
 import Commentsymbol from '../../comments/commentsymbol/commentsymbol';
 
 const onepost=props=>{
-    // console.log(props.onepostdata);
     const date=new Date(props.onepostdata.date);
     const montharr=['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
     const month=montharr[date.getMonth()];

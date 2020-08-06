@@ -38,7 +38,6 @@ class Resetpassword extends Component{
     }
     resetpasswordHandler=(e)=>{
         e.preventDefault();
-        // console.log(this.props.match);
         if(this.state.inputs[0].value===this.state.inputs[1].value)
         {
             this.props.resetpasswordauth(this.props.match.params.token,this.state.inputs[0].value,this.state.inputs[1].value);

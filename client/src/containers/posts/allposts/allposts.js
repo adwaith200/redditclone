@@ -14,7 +14,6 @@ class Allposts extends Component{
     async componentDidMount(){
         try{
             const allpostsdata=await axios('/post');
-            // console.log(allpostsdata.data.data);
             this.setState({
                 posts:allpostsdata.data.data,
                 loading:false

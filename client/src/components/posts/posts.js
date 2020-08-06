@@ -13,7 +13,6 @@ const posts=props=>{
     useEffect(()=>{
         setPage(0);
     },[]);
-    // console.log(props.posts.slice(0,7));
     const postsarr=props.posts.slice(page,page+7);
     const scrollToTop= () => {
         divref.current.scrollIntoView({ behavior: "smooth" })

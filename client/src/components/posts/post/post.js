@@ -8,7 +8,6 @@ import Votes from '../../votes/votes';
 import Commentsymbol from '../../comments/commentsymbol/commentsymbol';
 
 const post=props=>{
-    // console.log(props.post);
     const date=new Date(props.post.date);
     const montharr=['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
     const month=montharr[date.getMonth()];

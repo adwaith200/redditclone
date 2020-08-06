@@ -16,22 +16,26 @@ class Signup extends Component{
             {
                 type:'text',
                 value:'',
-                key:1
+                key:1,
+                data:'Enter your name' 
             },
             {
                 type:'email',
                 value:'',
-                key:2
+                key:2,
+                data:''
             },
             {
                 type:'password',
                 value:'',
-                key:3
+                key:3,
+                data:''
             },
             {
                 type:'passwordconfirm',
                 value:'',
-                key:4
+                key:4,
+                data:''
             }
         ],
         allfielderror:false,
@@ -90,7 +94,7 @@ class Signup extends Component{
                     {this.state.passworderror?<span className='validator'>Both the passwords dont match</span>:null}
                     <form className='signupdata'>
                         {this.state.inputs.map(ele=>{
-                            return <Input key={ele.key} type={ele.type} changed={(e)=>this.inputchangeHandler(ele.key,e)}/>
+                            return <Input key={ele.key} type={ele.type} data={ele.data} changed={(e)=>this.inputchangeHandler(ele.key,e)}/>
                         })}  
                         <Button type='Sign Up' submit={this.submitloginHandler}/>
                     </form>

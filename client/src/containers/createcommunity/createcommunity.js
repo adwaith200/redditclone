@@ -39,7 +39,6 @@ class Createcommunity extends Component{
         const myinput={...this.state.inputs[index]};
         myinput.value=e.target.value;
         myinputs[index]=myinput;
-        // console.log(myinputs);
         this.setState({
             inputs:myinputs
         });
@@ -53,7 +52,6 @@ class Createcommunity extends Component{
 
     postsubmitHandler=async()=>{
         const formdata=new FormData();
-        // console.log(this.state.inputs[0].value,this.state.inputs[1].value,this.state.postedpic);
         formdata.append('name',this.state.inputs[0].value);
         formdata.append('description',this.state.inputs[1].value);
         formdata.append('communitypic',this.state.communitypic);
@@ -65,7 +63,6 @@ class Createcommunity extends Component{
                     url:'/community?auth='+this.props.token,
                     data:formdata
                 });
-                console.log(communitydata);
                 this.props.history.push('/communites');
             }catch(err)
             {

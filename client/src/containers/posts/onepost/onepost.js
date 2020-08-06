@@ -22,7 +22,6 @@ class Onepost extends Component{
         })
         try{
             const postdata=await axios('/post/'+this.props.match.params.id);
-            // console.log(postdata.data.data);
             this.setState({
                 post:postdata.data.data,
                 loading:false
@@ -37,7 +36,6 @@ class Onepost extends Component{
     }
     routetocommunity=()=>{
         this.props.history.push('/community/'+this.state.post.community._id);
-        // console.log(this.props.history);
     }
     render()
     {

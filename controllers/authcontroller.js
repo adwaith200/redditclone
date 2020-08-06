@@ -56,12 +56,10 @@ exports.login=async(req,res,next)=>{
             return next(new Apperror('Please enter all credentials',401));
         }
         const userdata=await User.findOne({email:email});
-        console.log(email,password,userdata);
-        // console.log(!await userdata.checkpassword(password,userdata.password));
-        // if(!userdata|| !await userdata.checkpassword(password,userdata.password))
-        // {
-        //     return next(new Apperror('Invalid email or password'));
-        // }
+        if(!userdata|| !await userdata.checkpassword(password,userdata.password))
+        {
+            return next(new Apperror('Invalid email or password'));
+        }
         if(!userdata)
         {
             return next(new Apperror('Invalid email or password'));
@@ -85,7 +83,6 @@ exports.login=async(req,res,next)=>{
 exports.protected=async(req,res,next)=>{
     try{
         let token;
-        console.log(req.query);
         if(req.headers.authorization&&req.headers.authorization.startsWith('Bearer'))
         {
             token=req.headers.authorization.split(' ')[1];
@@ -99,7 +96,6 @@ exports.protected=async(req,res,next)=>{
         }
         const userid=await promisify(jwt.verify)(token,process.env.JWT_SECRET);
         const userdata=await User.findById(userid.id);
-        // console.log(userdata);
         req.user=userdata;
         next();
     }catch(err)

@@ -9,6 +9,8 @@ const router=express.Router();
 
 router.route('/').get(commentcontroller.getallcomments).post(authcontroller.protected,commentcontroller.createcomment);
 
+router.route('/userpostedcomment').get(authcontroller.protected,commentcontroller.getuserpostedcomments);
+
 router.route('/postcomment/:id').get(commentcontroller.getpostcomments);
 
 module.exports=router;

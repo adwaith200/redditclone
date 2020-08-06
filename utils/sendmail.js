@@ -9,11 +9,10 @@ class EMAIL{
     newtransport()
     {
         return nodemailer.createTransport({
-            host:'smtp.mailtrap.io',
-            port:'25',
+            service:'gmail',
             auth:{
-                user:'d9426025f171cb',
-                pass:'ea2041dcf458c6'
+                user:process.env.GMAIL_USERNAME,
+                pass:process.env.GMAIL_PASSWORD
             }
         });
     }

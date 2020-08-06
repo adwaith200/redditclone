@@ -14,5 +14,6 @@ router.route('/resetpassword/:token').post(authcontroller.resetpassword);
 router.route('/changeprofilepic').post(authcontroller.protected,usercontroller.uploadpic,usercontroller.resizepic,usercontroller.changeprofilepic);
 router.route('/followcommunity/:communityid').patch(authcontroller.protected,usercontroller.followcommunity);
 router.route('/unfollowcommunity/:communityid').patch(authcontroller.protected,usercontroller.unfollowcommunity);
+router.route('/:id').get(authcontroller.protected,usercontroller.getoneuser);
 
 module.exports=router
